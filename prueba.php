@@ -1,10 +1,11 @@
 <?php
 
-$contadorGlobal=0;
+$contadorGlobal
 function aumentarContador(){
 global $contadorGlobal;
-  return $contadorGlobal+1;
+ $A= $contadorGlobal+1;
 }
-echo "el nuevo valor es:" $contadorGlobal
+
+echo $A;
 
 ?>
