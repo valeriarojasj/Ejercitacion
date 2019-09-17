@@ -40,7 +40,14 @@
 
 <?php
 		$array = [
-		0 => ["id" => 1,"titulo" => "Copas","descripcion" => "Hermosas copas de cristal","precio" => 300,"imagen" => "img-pdto-1.jpg", "enOferta" => false],
+		0 => [
+		"id" => 1,
+		"titulo" => "Copas",
+		"descripcion" => "Hermosas copas de cristal",
+		"precio" => 300,
+		"imagen" => "img-pdto-1.jpg",
+		"enOferta" => false
+		],
 		1 => ["id" => 2,"titulo" => "Dulce de leche","descripcion" => "Dulce de leche marca Serenisima","precio" => 500,"imagen" => "img-pdto-2.jpg", "enOferta" => false],
 		2 => ["id" => 3,"titulo" => "Mesas","descripcion" => "Mesas para restaurante de 4 puestos","precio" => 700,"imagen" => "img-pdto-3.jpg", "enOferta" => true],
 		3 => ["id" => 4,"titulo" => "Champagne","descripcion" => "Champagne francesa para festejar","precio" => 900,"imagen" => "img-pdto-1.jpg", "enOferta" => false],
@@ -48,16 +55,16 @@
 		5 => ["id" => 6,"titulo" => "Sillas","descripcion" => "Sillas de madera con respaldo","precio" => 2100,"imagen" => "img-pdto-3.jpg", "enOferta" => true]
 		];
 
-foreach ($array as $position => $subArray) {
-	$titulos[]=$subArray["titulo"];
-	$descripciones[]=$subArray["descripcion"];
-	$precios[]=$subArray["precio"];
-	$imagenes[]=$subArray["imagen"];
-	$enOfertas[]=$subArray["enOferta"];
-
-}
-
-
+$navElements=[
+['seccion'=>'home',
+'source'=>'home.html'],
+['seccion'=>'quienes',
+ 'source'=>'quienes.html'],
+['seccion'=>'servicio', 'source'=>'servicio.html'],
+['seccion'=>'sucursales', 'source' =>'sucursales.html'],
+['seccion'=>'portafolio', 'source'=>'portafolio.html'],
+['seccion'=>'contacto', 'source'=>'contacto.html']
+];
 ?>
 
 
@@ -65,69 +72,26 @@ foreach ($array as $position => $subArray) {
 
 		<section class="vip-products">
 
-			<article class="product">
-					<?php 	foreach($titulos as $titulo){?>
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-1.jpg" alt="pdto 01">
-					<img class="special" src="images/img-nuevo.png" alt="plato nuevo">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
+			<?php foreach ($array as $position => $subarray) {
+				 ?>
+				<article class="product">
+					<div class="photo-container">
+						<img class="photo" src="images/<?= $subarray['imagen'] ?>" alt="pdto 01">
+						<?php if ($subarray['enOferta']){ ?>
+						<img class="special" src="images/img-descuento.png" alt="plato nuevo">
+					<?php } ?>
 
-				<h2>	<?php  echo $titulo;}?></h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
+						<a class="zoom" href="#">Ampliar foto</a>
+					</div>
 
-			<article class="product">
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-2.jpg" alt="pdto 02">
-					<img class="special" src="images/img-gratis.png" alt="gratis más de 3">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
-			<article class="product">
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-3.jpg" alt="pdto 03">
-					<img class="special" src="images/img-descuento.png" alt="descuento efectivo">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
-			<article class="product">
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-1.jpg" alt="pdto 01">
-					<img class="special" src="images/img-gratis.png" alt="gratis más de 3">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
+					<h2><?= $subarray['titulo'] ?> </h2>
+					<p><?= $subarray['descripcion'] ?></p>
+					<a class="more" href="#">ver más</a>
+				</article>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
-			<article class="product">
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-2.jpg" alt="pdto 02">
-					<img class="special" src="images/img-nuevo.png" alt="plato nuevo">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
-			<article class="product">
-				<div class="photo-container">
-					<img class="photo" src="images/img-pdto-3.jpg" alt="pdto 03">
-					<img class="special" src="images/img-descuento.png" alt="descuento efectivo">
-					<a class="zoom" href="#">Ampliar foto</a>
-				</div>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae eaque debitis sint necessitatibus, officia ex.</p>
-				<a class="more" href="#">ver más</a>
-			</article>
+			<?php } ?>
 
 
 
@@ -135,12 +99,10 @@ foreach ($array as $position => $subArray) {
 
 		<footer class="main-footer">
 			<ul>
-				<li><a href="#">home</a></li>
-				<li><a href="#">quienes</a></li>
-				<li><a href="#">servicios</a></li>
-				<li><a href="#">portfolio</a></li>
-				<li><a href="#">sucursales</a></li>
-				<li><a href="#">contacto</a></li>
+				<?php foreach ($navElements as $navElement) {
+				?>
+				<li><a href="<?=$navElement['source']; ?>"><?=$navElement['seccion'];?></a></li>
+<?php } ?>
 			</ul>
 		</footer>
 	</div>
