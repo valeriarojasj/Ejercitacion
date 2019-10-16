@@ -1,0 +1,81 @@
+<?php
+require_once('Cliente.php');
+
+Class Persona extends Cliente implements Imprimible{
+    Private $nombre;
+    Private $apellido;
+    Private $documento;
+    Private $nacimiento;
+
+    public function __construct($nombre,$apellido,$documento,$nacimiento,$email,$pass){
+        $this->nombre = $nombre;
+        $this->apellido = $apellido;
+        $this->documento = $documento;
+        $this->nacimiento = $nacimiento;
+        parent::setEmail($email);
+        parent::setPassword($pass);
+     
+      }
+
+    
+      public function getNombre(){
+        return $this->nombre;  
+      }
+
+      public function getApellido(){
+        return $this->apellido;  
+      }
+
+      public function getDocumento(){
+        return $this->documento;  
+      }
+
+      public function getNacimiento(){
+        return $this->nacimiento;  
+      }
+
+      public function setNombre($nombre){
+        $this->nombre->$nombre;  
+      }
+
+      public function setApellido($apellido){
+        $this->apellido->$apellido;   
+      }
+      public function setDocumento($documento){
+        $this->documento->$documento;  
+      }
+
+      public function setNacimiento($nacimiento){
+        $this->nacimiento->$nacimiento;   
+      }
+     
+      public function  cobrarServicios(){
+        if($this->cuenta instanceOf Classic){
+          
+          $cobrar = $this->cuenta->getBalance()-100;
+          $this->cuenta->setBalance($cobrar);
+        }
+        if($this->cuenta instanceOf Gold){
+          $cobrar = $this->cuenta->getBalance()-strlen($this->getApellido())*10;
+          $this->cuenta->setBalance($cobrar);
+
+        }
+        if($this->cuenta instanceOf Platinum){
+          $cobrar = $this->cuenta->getBalance()-$this->cuenta->getBalance()*0.1;
+          $this->cuenta->setBalance($cobrar);
+
+        }
+
+        if($this->cuenta instanceOf Black){
+
+          $weekday=date('w', strtotime($this->fechaUltimoMov));
+
+          $cobrar = $this->cuenta->getBalance()-(100*$weekday +500);
+
+          $this->cuenta->setBalance($cobrar);
+
+        }
+    }
+
+
+}
