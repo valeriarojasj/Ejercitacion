@@ -1,5 +1,5 @@
 <?php
-require_once('Cliente.php');
+
 
 Class Persona extends Cliente implements Imprimible{
     Private $nombre;
@@ -7,51 +7,57 @@ Class Persona extends Cliente implements Imprimible{
     Private $documento;
     Private $nacimiento;
 
-    public function __construct($nombre,$apellido,$documento,$nacimiento,$email,$pass){
+    public function __construct(string $nombre,string $apellido, string $documento, string $nacimiento, string $email, string $pass){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->documento = $documento;
         $this->nacimiento = $nacimiento;
         parent::setEmail($email);
-        parent::setPassword($pass);
-     
+        parent::setPass($pass);
+
+
       }
 
-    
+
       public function getNombre(){
-        return $this->nombre;  
+        return $this->nombre;
       }
 
       public function getApellido(){
-        return $this->apellido;  
+        return $this->apellido;
       }
 
       public function getDocumento(){
-        return $this->documento;  
+        return $this->documento;
       }
 
       public function getNacimiento(){
-        return $this->nacimiento;  
+        return $this->nacimiento;
       }
 
-      public function setNombre($nombre){
-        $this->nombre->$nombre;  
+      public function setNombre(string $nombre){
+        $this->nombre->$nombre;
       }
 
-      public function setApellido($apellido){
-        $this->apellido->$apellido;   
+      public function setApellido(string $apellido){
+        $this->apellido->$apellido;
       }
-      public function setDocumento($documento){
-        $this->documento->$documento;  
+      public function setDocumento(string $documento){
+        $this->documento->$documento;
       }
 
-      public function setNacimiento($nacimiento){
-        $this->nacimiento->$nacimiento;   
+      public function setNacimiento(string $nacimiento){
+        $this->nacimiento->$nacimiento;
       }
-     
+
+      public function setCuenta(Cuenta $cuenta){
+        parent::setCuenta($cuenta);
+      }
+
+
       public function  cobrarServicios(){
         if($this->cuenta instanceOf Classic){
-          
+
           $cobrar = $this->cuenta->getBalance()-100;
           $this->cuenta->setBalance($cobrar);
         }
@@ -75,6 +81,10 @@ Class Persona extends Cliente implements Imprimible{
           $this->cuenta->setBalance($cobrar);
 
         }
+    }
+
+    public function mostrar(){
+      return $this->getNombre() . " " . $this->getApellido() . "<br>";
     }
 
 

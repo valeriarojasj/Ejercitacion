@@ -1,10 +1,9 @@
 <?php
 
 
-
 abstract Class Cuenta implements Imprimible{
- 
-  
+
+
   protected $cbu;
   protected $balance;
   protected $fechaUltimoMov;
@@ -12,9 +11,9 @@ abstract Class Cuenta implements Imprimible{
 //Creo una función constructora con sus parámetros necesarios
 
   public function __construct(string $cbu){
- 
+
     $this->cbu = $cbu;
-  
+
   }
 
 
@@ -38,16 +37,17 @@ abstract Class Cuenta implements Imprimible{
   public function getFechaUltimoMov():string{
     return $this->fechaUltimoMov;
   }
- 
-  
+
+
   public abstract function debitar(int $monto, string $lugarTrans);
-  
+
   public function acreditar(int $monto, string $lugarTrans){
     $this->balance=$this->balance+$monto;
-    $this->fechaUltimoMov=$this->date('Y-m-d');
-  
+    $this->fechaUltimoMov=date('Y-m-d');
+
   }
+  public function mostrar(){
+    return $this->getBalance()."<br>";
+  }
+
 }
-
-  
-

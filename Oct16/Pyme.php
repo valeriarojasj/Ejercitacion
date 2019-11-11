@@ -1,37 +1,36 @@
 <?php
-require_once('Cliente.php');
 Class Pyme extends Cliente implements Liquidable, Imprimible{
     Private $cuit;
     Private $razonSocial;
- 
 
-    public function __construct($cuit,$razonSocial,$email,$pass){
+
+    public function __construct(string $cuit,string $razonSocial,string $email,string $pass){
         $this->cuit = $cuit;
         $this->razonSocial = $razonSocial;
         parent::setEmail($email);
-        parent::setPassword($pass);
-     
+        parent::setPass($pass);
+
       }
 
       public function getCuit(){
-        return $this->cuit;  
+        return $this->cuit;
       }
 
       public function getRazonSocial(){
-        return $this->razonSocial;  
+        return $this->razonSocial;
       }
 
-      public function setCuit($cuit){
-        $this->cuit->$cuit;  
+      public function setCuit(string $cuit){
+        $this->cuit->$cuit;
       }
 
-      public function setRazonSocial($razonSocial){
-        $this->razonSocial->$razonSocial;   
+      public function setRazonSocial(string $razonSocial){
+        $this->razonSocial->$razonSocial;
       }
 
       public function  cobrarServicios(){
         if($this->cuenta instanceOf Classic){
-          
+
           $cobrar = $this->cuenta->getBalance()-100;
           $this->cuenta->setBalance($cobrar);
         }
@@ -61,8 +60,14 @@ Class Pyme extends Cliente implements Liquidable, Imprimible{
       }
 
       public function liquidarHaberes(Persona $persona, int $monto){
+        $liquidacion= $this->cuenta->getBalance()-(0.01*getBalance());
+        $this->cuenta->setBalance($liquidacion);
+
 
       }
-    
+
+      public function mostrar(){
+        return $this->getRazonSocial()."<br>";
+      }
 
 }

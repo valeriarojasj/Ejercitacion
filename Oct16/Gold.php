@@ -1,17 +1,17 @@
 <?php
 
-require_once('Cuenta.php');
+
 
 Class Gold extends Cuenta{
- 
+
 
   public function __construct(string $cbu){
- 
+
     parent::__construct($cbu);
-  
+
   }
   public function debitar(int $monto, string $lugarTrans){
-    
+
     if($lugarTrans=='Banelco'){
       $montoNuevo=$monto;
     }
@@ -31,10 +31,7 @@ Class Gold extends Cuenta{
 
   }
 
- 
 
-  
+
+
 }
-
-  
-

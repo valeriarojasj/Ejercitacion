@@ -1,9 +1,9 @@
 <?php
 
-require_once('Cuenta.php');
+
 
 Class Black extends Cuenta{
- 
+
 
 //Creo una función constructora con sus parámetros necesarios
 
@@ -26,9 +26,6 @@ Class Black extends Cuenta{
     parent::acreditar($montoNuevo,$lugarTrans);
 
   }
-  
+
 
 }
-
-  
-

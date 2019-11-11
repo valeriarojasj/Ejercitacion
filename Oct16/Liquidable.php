@@ -1,10 +1,8 @@
 <?php
 
 Interface Liquidable {
-  
-public function liquidarHaberes();
 
-
+public function liquidarHaberes(Persona $persona, int $monto);
 
 
 }

@@ -1,9 +1,8 @@
 <?php
-  require_once('Cuenta.php');
-
+  
 
 Class Classic extends Cuenta{
- 
+
 
 
   public function __construct(string $cbu){
@@ -11,7 +10,7 @@ Class Classic extends Cuenta{
   }
 
   public function debitar(int $monto, string $lugarTrans){
-    
+
     if($lugarTrans=='Banelco'){
       $montoNuevo=$monto*1.05;
     }
@@ -30,9 +29,6 @@ Class Classic extends Cuenta{
     parent::acreditar($montoNuevo,$lugarTrans);
 
   }
-  
+
 
 }
-
-  
-

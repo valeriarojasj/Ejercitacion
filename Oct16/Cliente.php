@@ -1,18 +1,17 @@
 <?php
 
-require_once('Cuenta.php');
 
 abstract Class Cliente{
- 
-  
+
+
   protected $email;
   protected $pass;
   protected $cuenta;
 
 //Creo una función constructora con sus parámetros necesarios
 
-  public function __construct($email,$pass,$cuenta){
- 
+  public function __construct(string $email, string $pass, Cuenta $cuenta){
+
     $this->setEmail($email);
     $this->setPassword($pass);
     $this->setCuenta($cuenta);
@@ -23,18 +22,18 @@ abstract Class Cliente{
   public function setEmail($email){
     $this->email = $email;
   }
-  
+
   public function getEmail(){
     return $this->email;
   }
-  public function setPass($pass){
+  public function setPass(string $pass){
     $this->pass = $pass;
   }
   public function getPass(){
     return $this->pass;
   }
 
-  public function setCuenta($cuenta){
+  public function setCuenta( Cuenta $cuenta){
     $this->cuenta = $cuenta;
   }
   public function getCuenta(){
